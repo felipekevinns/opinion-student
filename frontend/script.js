@@ -1,11 +1,16 @@
+// Espera o documento HTML ser completamente carregado
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. Seleção dos Elementos da UI (Não mudou) ---
+    // --- 1. Seleção dos Elementos da UI (ATUALIZADO) ---
     const form = document.getElementById('feedback-form');
     const textarea = document.getElementById('opiniao-textarea');
     const charCounter = document.getElementById('char-counter');
     const errorMessage = document.getElementById('error-message');
     const checkbox = document.getElementById('anonimo-checkbox');
+    
+    // NOVO: Seleciona os elementos do campo de nome
+    const autorInputWrapper = document.getElementById('autor-input-wrapper');
+    const autorInput = document.getElementById('autor-input');
     
     const MAX_CHARS = 1000;
 
@@ -20,14 +25,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- NOVO: LÓGICA PARA MOSTRAR/ESCONDER O CAMPO DE NOME ---
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            // Se "Anônimo" estiver MARCADO, esconde o campo
+            autorInputWrapper.classList.remove('show');
+        } else {
+            // Se "Anônimo" estiver DESMARCADO, mostra o campo
+            autorInputWrapper.classList.add('show');
+        }
+    });
+
     // --- 3. Regra: Validação no Envio (ATUALIZADO) ---
-    // Tornamos a função 'async' para podermos usar 'await'
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); 
 
         const opiniao = textarea.value.trim();
 
-        // Validação de campo vazio (Não mudou)
         if (opiniao.length === 0) {
             errorMessage.textContent = 'Por favor, escreva sua opinião antes de enviar.';
             errorMessage.classList.add('show');
@@ -35,52 +49,40 @@ document.addEventListener('DOMContentLoaded', () => {
             return; 
         }
 
-        // Limpa qualquer erro anterior
         errorMessage.classList.remove('show');
         textarea.classList.remove('error-border');
 
-        // Pega o status do anonimato
+        // ATUALIZADO: Lógica do Autor
         const isAnonimo = checkbox.checked;
-        
-        // NOVO: Prepara os dados para enviar ao backend
+
+        const autorValor = isAnonimo ? 'Anônimo' : autorInput.value;
+
         const dados = {
             texto_opiniao: opiniao,
-            // Se for anônimo, enviamos 'null' ou 'Anônimo', 
-            // nosso backend já trata isso
-            autor: isAnonimo ? 'Anônimo' : null 
+            autor: autorValor
         };
 
-        // (Se não for anônimo, você precisaria de um campo <input> para o nome,
-        // mas vamos manter simples por enquanto e deixar o backend cuidar)
-
         try {
-            // NOVO: CONEXÃO COM O BACKEND (A Mágica)
-            // Usamos 'fetch' para chamar nossa rota POST
+            // CONEXÃO COM O BACKEND (Não mudou)
             const response = await fetch('https://opinion-student-backend.onrender.com/opiniao', {
-                method: 'POST', // O método que criamos
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json' // Avisa que estamos enviando JSON
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(dados) // Converte nosso objeto 'dados' em texto JSON
+                body: JSON.stringify(dados)
             });
 
-            // Se o backend responder com um erro (ex: 500)
             if (!response.ok) {
                 throw new Error('Falha ao enviar opinião. Tente novamente.');
             }
 
-            // Se deu tudo certo (resposta 201 Created)
             const resultado = await response.json();
             console.log('Opinião enviada:', resultado);
 
-            // Regra 3 (Saída: Sucesso)
             alert('Obrigado! Sua opinião foi enviada.');
-
-            // Redireciona para o Feed
             window.location.href = 'feed.html';
 
         } catch (error) {
-            // Se o servidor estiver desligado ou der erro
             console.error('Erro no fetch:', error);
             errorMessage.textContent = error.message;
             errorMessage.classList.add('show');

@@ -198,6 +198,41 @@ h1 {
     cursor: pointer;
 }
 
+.autor-input-wrapper {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Classe 'show' que o JS vai adicionar para mostrar o campo */
+.autor-input-wrapper.show {
+    display: flex;
+}
+
+.autor-input-wrapper label {
+    font-weight: 500; /* Medium */
+    color: var(--text-secondary);
+}
+
+/* Reutiliza o estilo dos inputs do login.html */
+.autor-input-wrapper input {
+    width: 100%;
+    padding: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--borders);
+    color: var(--text-main);
+    border-radius: 6px;
+}
+
+.autor-input-wrapper input:focus {
+    outline: none;
+    border-color: var(--secondary-highlight);
+}
+
 /* Botão de Envio */
 #submit-button {
     display: inline-block;
