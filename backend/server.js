@@ -271,6 +271,25 @@ app.get('/admin/dashboard', verificarToken, async (req, res) => {
 });
 
 
+app.delete('/admin/opiniao/:id', verificarToken, async (req, res) => {
+    const { id } = req.params; // Pega o ID da opinião da URL
+
+    try {
+        // Primeiro, verifica se a opinião existe
+        const [opiniaoExistente] = await pool.query('SELECT * FROM opinioes WHERE id = ?', [id]);
+        if (opiniaoExistente.length === 0) {
+            return res.status(404).json({ message: 'Opinião não encontrada.' });
+        }
+
+        // Se existe, procede com a exclusão
+        await pool.query('DELETE FROM opinioes WHERE id = ?', [id]);
+        res.status(204).send(); // 204 No Content: Sucesso, mas não há conteúdo para retornar
+    } catch (error) {
+        console.error('Erro ao deletar opinião:', error);
+        res.status(500).json({ message: 'Erro interno do servidor ao deletar opinião.' });
+    }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Backend rodando na porta ${PORT}`);
