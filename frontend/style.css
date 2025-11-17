@@ -1,0 +1,683 @@
+/* ======================================================= */
+/* ------------------------------------------------------- */
+/*                         GERAL                           */
+/* ------------------------------------------------------- */
+/* ======================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-main: #0D1117;
+    --bg-secondary: #161B22;
+    --primary: #1F2A48;
+    --secondary-highlight: #30A8F0;
+    --text-main: #F0F0F0;
+    --text-secondary: #8B949E;
+    --borders: #30363D;
+    --danger: #DA3633;
+
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+/* ---  Estilos do Cabeçalho Principal (Logo + Navegação) --- */
+.site-header {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-main);
+    border-bottom: 1px solid var(--borders);
+    padding: 1rem;
+    margin-bottom: 50px;
+}
+
+
+.site-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.site-logo {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+
+.site-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.site-nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500; /* Medium */
+    font-size: 0.95rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.site-nav a:hover {
+    color: var(--text-main);
+    background-color: var(--bg-secondary);
+}
+
+/* Estilo para o link da PÁGINA ATUAL */
+.site-nav a.active {
+    color: var(--secondary-highlight);
+    font-weight: 700;
+}
+
+body.login-body {
+    padding-top: 1rem; /* Volta ao padding original */
+}
+
+
+
+
+/* ======================================================= */
+/* ------------------------------------------------------- */
+/*                   TELA DE SUBMISSÃO                     */
+/* ------------------------------------------------------- */
+/* ======================================================= */
+
+/* Título Principal */
+h1 {
+    font-weight: 700; /* Bold */
+    font-size: 2rem;
+    color: var(--text-main);
+    text-align: center;
+}
+
+.container-submissao {
+    margin-top: 50px;
+    max-width: 500px;
+}
+
+/* Wrapper do Textarea (para o contador) */
+.textarea-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Campo de Opinião (Textarea) */
+#opiniao-textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 1rem;
+    padding-bottom: 2rem; /* Espaço para o contador não sobrepor */
+    
+    /* Estilos da Paleta */
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--borders);
+    color: var(--text-main);
+    
+    /* Estilos de Fonte */
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400; /* Regular */
+    
+    border-radius: 8px;
+    resize: vertical; /* Permite que o usuário aumente a altura */
+}
+
+/* Placeholder do Textarea */
+#opiniao-textarea::placeholder {
+    color: var(--text-secondary);
+    font-weight: 400; /* Regular */
+}
+
+#opiniao-textarea:focus {
+    outline: none;
+    border-color: var(--secondary-highlight);
+    box-shadow: 0 0 0 3px rgba(48, 168, 240, 0.3);
+}
+
+/* Contador de Caracteres */
+.counter {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Opção de Anonimato (Checkbox) */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer; /* Facilita o clique */
+}
+
+#anonimo-checkbox {
+    width: 1.15rem;
+    height: 1.15rem;
+    cursor: pointer;
+    /* Estiliza a cor da caixa marcada */
+    accent-color: var(--secondary-highlight);
+}
+
+.checkbox-wrapper label {
+    font-weight: 400; /* Regular */
+    color: var(--text-main);
+    user-select: none; /* Impede a seleção do texto ao clicar */
+    cursor: pointer;
+}
+
+/* Botão de Envio */
+#submit-button {
+    width: 100%;
+    padding: 0.85rem;
+    
+    /* Estilos da Paleta */
+    background-color: var(--secondary-highlight);
+    color: var(--bg-main); /* Texto escuro, conforme especificado */
+    
+    /* Estilos de Fonte */
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500; /* Medium */
+    
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+#submit-button:hover {
+    filter: brightness(0.9);
+}
+
+/* --- 6. Estilos de Validação (JavaScript) --- */
+
+/* Mensagem de Erro */
+.error-message {
+    font-size: 0.9rem;
+    color: var(--danger);
+    text-align: center;
+    display: none; /* Oculto por padrão */
+}
+
+.error-message.show {
+    display: block;
+}
+
+#opiniao-textarea.error-border {
+    border-color: var(--danger);
+}
+
+
+
+
+
+
+
+
+/* ======================================================= */
+/* ------------------------------------------------------- */
+/*                     TELA DE FEED                        */
+/* ------------------------------------------------------- */
+/* ======================================================= */
+
+/* Cabeçalho do Feed */
+.feed-header {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+    text-align: center;
+}
+
+.feed-header h1 {
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.feed-header p {
+    font-size: 1rem;
+    font-weight: 400; /* Regular */
+    color: var(--text-secondary);
+}
+
+
+.feed-container {
+    max-width: 500px;
+    gap: 1rem;
+}
+
+/* --- 8. Controles de Ordenação --- */
+.filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.sort-select {
+    background-color: var(--bg-secondary);
+    color: var(--text-main);
+    border: 1px solid var(--borders);
+    border-radius: 6px;
+    padding: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: var(--secondary-highlight);
+}
+
+/* --- 9. Lista de Opiniões --- */
+.feed-lista {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaço entre os cards */
+}
+
+/* --- 10. Card de Opinião (Componente Central) --- */
+.opinion-card {
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--borders);
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaçamento interno do card */
+}
+
+/* Texto da Opinião */
+.card-text {
+    font-size: 1rem;
+    font-weight: 400; /* Regular */
+    color: var(--text-main);
+    line-height: 1.6; /* Melhora a legibilidade */
+}
+
+/* Informações (Autor e Data) */
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+.card-meta strong {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+/* Painel de Votação (Botões) */
+.card-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 0.5rem;
+    border-top: 1px solid var(--borders);
+    padding-top: 1rem;
+}
+
+.vote-button {
+    padding: 0.6rem;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500; /* Medium */
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.vote-button:hover {
+    filter: brightness(1.15);
+}
+.vote-button:active {
+    transform: scale(0.98);
+}
+
+/* Estilos dos Botões (da Paleta de Cores) */
+.vote-button.apoiar {
+    background-color: var(--sucesso, #238636);
+    color: var(--text-main);
+}
+.vote-button.neutro {
+    background-color: var(--neutro, #FFB700);
+    color: var(--bg-main); /* Texto escuro para contraste */
+}
+.vote-button.contra {
+    background-color: var(--danger, #DA3633);
+    color: var(--text-main);
+}
+
+/* Estilo para VOTO SELECIONADO (via JS) */
+.vote-button.selected {
+    filter: brightness(1.4);
+    box-shadow: 0 0 0 2px var(--secondary-highlight); /* Destaque azul */
+}
+
+/* Estilo para VOTO NÃO SELECIONADO (via JS) */
+.opinion-card.voted-card .vote-button:not(.selected) {
+    filter: grayscale(0.8) brightness(0.7);
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Contagem de Votos */
+.card-vote-count {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+.card-vote-count strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+
+
+
+
+
+/* ======================================================= */
+/* ------------------------------------------------------- */
+/*                     TELA DE LOGIN                       */
+/* ------------------------------------------------------- */
+/* ======================================================= */
+.login-container {
+    max-width: 400px;
+    gap: 1rem;
+    padding-top: 2rem;
+}
+
+.login-logo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50% ;
+}
+
+.login-container h2 {
+    text-align: center;
+    font-weight: 700;
+}
+
+.login-subtitulo {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: -0.5rem;
+}
+
+/* Grupo de Input (Label + Input) */
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.input-group label {
+    font-weight: 500; /* Medium */
+    color: var(--text-secondary);
+}
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--borders);
+    color: var(--text-main);
+    border-radius: 6px;
+}
+.input-group input:focus {
+    outline: none;
+    border-color: var(--secondary-highlight);
+}
+
+
+
+
+/* ======================================================= */
+/* ------------------------------------------------------- */
+/*                   TELA DE DASHBOARD                     */
+/* ------------------------------------------------------- */
+/* ======================================================= */
+
+.dashboard-header {
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--borders);
+    padding: 1rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+.dashboard-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+}
+.dashboard-logo {
+    width: 30px;
+    height: 30px;
+}
+.dashboard-header-content h1 {
+    font-size: 1.25rem;
+    text-align: left;
+}
+
+.container-dashboard {
+    display: flex;
+    align-items: center;
+}
+
+
+.ranking-list {
+    width: 100%;
+    max-width: 900px; /* Mais largo para o novo design */
+    margin: 0 auto;
+    list-style: none; /* Remove os números padrão (1., 2., 3.) */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ranking-card {
+    display: flex;
+    align-items: stretch;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--borders);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.ranking-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Seção da Posição (Esquerda) --- */
+.ranking-position {
+    flex: 0 0 80px; /* Não cresce, 80px de largura */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    border-right: 1px solid var(--borders);
+    padding: 1rem;
+}
+.ranking-position .fa-crown {
+    font-size: 1.75rem;
+    color: var(--neutro, #FFB700); /* Cor de Ouro */
+    display: none; /* Oculto por padrão */
+}
+.ranking-position .rank-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+}
+
+/* --- Seção dos Detalhes (Meio) --- */
+.ranking-details {
+    flex: 1 1 auto; /* Cresce para preencher o espaço */
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.opinion-text {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--text-main);
+}
+.opinion-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 1rem;
+}
+.opinion-meta strong {
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+/* --- Seção da Pontuação (Direita) --- */
+.ranking-score {
+    flex: 0 0 100px; /* 100px de largura */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.1);
+    border-left: 1px solid var(--borders);
+    border-radius: 0 8px 8px 0;
+}
+.score-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+.score-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* --- Estilos do Gráfico de Barras --- */
+.graph-legend {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+.dot.apoiar { background-color: var(--sucesso, #238636); }
+.dot.neutro { background-color: var(--neutro, #FFB700); }
+.dot.contra { background-color: var(--danger, #DA3633); }
+
+.graph-container {
+    display: flex;
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden; /* Garante que as barras fiquem contidas */
+    background-color: var(--bg-main);
+}
+.graph-bar {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+.bar-apoiar { background-color: var(--sucesso, #238636); }
+.bar-neutro { background-color: var(--neutro, #FFB700); }
+.bar-contra { background-color: var(--danger, #DA3633); }
+
+
+/* --- Estilos Especiais do Pódio --- */
+
+
+.ranking-position .fa-medal {
+    display: none;
+    font-size: 1.75rem; /* Mesmo tamanho da coroa */
+}
+
+/* 1º Lugar */
+.ranking-card.rank-1 {
+    border-color: var(--neutro, #FFB700);
+    box-shadow: 0 0 20px rgba(255, 183, 0, 0.2);
+}
+.ranking-card.rank-1 .ranking-position .fa-crown {
+    display: block; /* Mostra a coroa */
+}
+.ranking-card.rank-1 .ranking-position .rank-number {
+    display: none; /* Esconde o "#1" */
+}
+.ranking-card.rank-1 .ranking-score {
+    background-color: rgba(255, 183, 0, 0.1);
+}
+
+/* 2º Lugar */
+.ranking-card.rank-2 {
+    border-color: #c0c0c0;
+}
+.ranking-card.rank-2 .ranking-position .fa-medal {
+    display: block;
+    color: #c0c0c0;
+}
+.ranking-card.rank-2 .ranking-position .rank-number {
+    display: none;
+}
+
+/* 3º Lugar */
+.ranking-card.rank-3 {
+    border-color: #cd7f32;
+}
+.ranking-card.rank-3 .ranking-position .fa-medal {
+    display: block;
+    color: #cd7f32;
+}
+.ranking-card.rank-3 .ranking-position .rank-number {
+    display: none;
+}

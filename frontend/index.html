@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opnion Student - Submissão</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="site-header-content">
+            <a href="index.html">
+                <img src="../Logo.png" alt="Logo Opnion Student" class="site-logo">
+            </a>
+            <nav class="site-nav">
+                <a href="index.html" class="active">Enviar Sugestão</a>
+                <a href="feed.html">Ver Feed</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container container-submissao">
+        <h1>Qual sua sugestão?</h1>
+
+        <form id="feedback-form" novalidate>
+            <div class="textarea-wrapper">
+                <textarea 
+                    id="opiniao-textarea"
+                    placeholder="Digite aqui a sua sugestão ou feedback..."
+                    maxlength="1000"
+                ></textarea>
+                <div id="char-counter" class="counter">0 / 1000</div>
+            </div>
+
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="anonimo-checkbox" checked>
+                <label for="anonimo-checkbox">Anônimo</label>
+            </div>
+
+            <p id="error-message" class="error-message"></p>
+
+            <button type="submit" id="submit-button">Enviar Opinião</button>
+        </form>
+    </main>
+
+</body>
+</html>

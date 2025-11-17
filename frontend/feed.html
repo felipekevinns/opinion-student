@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opnion Student - Feed</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="feed.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="site-header-content">
+            <a href="index.html">
+                <img src="../Logo.png" alt="Logo Opnion Student" class="site-logo">
+            </a>
+            <nav class="site-nav">
+                <a href="index.html">Enviar Sugestão</a>
+                <a href="feed.html" class="active">Ver Feed</a>
+            </nav>
+        </div>
+    </header>
+
+    
+    <main class="container feed-container">
+        <header class="feed-header">
+            <h1>Feed da Comunidade</h1>
+            <p>Veja o que os alunos estão falando e dê sua voz.</p>
+        </header>
+        
+        <div class="filter-controls">
+            <label for="sort-select">Ordenar por:</label>
+            <select id="sort-select" class="sort-select">
+                <option value="recentes" selected>Mais Recentes (Padrão)</option>
+                <option value="apoiadas">Mais Apoiadas</option>
+                <option value="contrarias">Mais Contrárias</option>
+            </select>
+        </div>
+
+        <div id="feed-lista" class="feed-lista">
+            </div>
+    </main>
+
+</body>
+</html>
