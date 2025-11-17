@@ -200,29 +200,44 @@ h1 {
 
 /* Botão de Envio */
 #submit-button {
-    width: 100%;
+    display: inline-block;
+    position: relative;
     padding: 0.85rem;
-    
-    /* Estilos da Paleta */
     background-color: var(--secondary-highlight);
-    color: var(--bg-main); /* Texto escuro, conforme especificado */
-    
-    /* Estilos de Fonte */
+    color: var(--bg-main);    
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    font-weight: 500; /* Medium */
-    
+    font-weight: 500;
     border: none;
-    border-radius: 6px;
+    border-radius: 9px;
     cursor: pointer;
-    transition: filter 0.2s ease;
+    transition: all 0.4s;
 }
 
 #submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px #18181840;
     filter: brightness(0.9);
 }
 
-/* --- 6. Estilos de Validação (JavaScript) --- */
+#submit-button::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 9px; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: var(--secondary-highlight) !important;
+    transition: all .8s;
+}
+
+#submit-button:hover::after {
+    transform: scaleX(1.2) scaleY(1.4);
+    opacity: 0;
+}
 
 /* Mensagem de Erro */
 .error-message {
