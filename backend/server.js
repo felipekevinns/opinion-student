@@ -4,7 +4,7 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = 'password';
+const JWT_SECRET = process.env.JWT_SECRET || 'password';
 
 const app = express();
 const PORT = 3000;
@@ -17,11 +17,11 @@ app.use(express.json());
 
 
 const pool = mysql.createPool({
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'password',
-    database: 'opnion_student'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 }).promise();
 
 app.get('/', (req, res) => {
