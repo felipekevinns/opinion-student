@@ -705,11 +705,12 @@ h1 {
     padding: 0;
 }
 .dashboard-logo {
-    width: 30px;
-    height: 30px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
 }
 .dashboard-header-content h1 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     text-align: left;
 }
 
