@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // NOVO: Chama a rota de login do backend
-            const response = await fetch('http://localhost:3000/admin/login', {
+            const response = await fetch('https://opinion-student-backend.onrender.com/admin/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

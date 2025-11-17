@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // NOVO: CONEXÃO COM O BACKEND (A Mágica)
             // Usamos 'fetch' para chamar nossa rota POST
-            const response = await fetch('http://localhost:3000/opiniao', {
+            const response = await fetch('https://opinion-student-backend.onrender.com/opiniao', {
                 method: 'POST', // O método que criamos
                 headers: {
                     'Content-Type': 'application/json' // Avisa que estamos enviando JSON

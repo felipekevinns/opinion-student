@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // NOVO: Chama a rota protegida do backend
     try {
-        const response = await fetch('http://localhost:3000/admin/dashboard', {
+        const response = await fetch('https://opinion-student-backend.onrender.com/admin/dashboard', {
             method: 'GET',
             headers: {
                 // ANEXA O TOKEN para provar que estamos logados

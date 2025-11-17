@@ -91,7 +91,7 @@ const handleVoteClick = async (event) => {
 
     // NOVO: CONEXÃO COM O BACKEND
     try {
-        const response = await fetch(`http://localhost:3000/opiniao/${opiniaoId}/voto`, {
+        const response = await fetch(`https://www.google.com/search?q=https://opinion-student-backend.onrender.com/opiniao/${opiniaoId}/voto`, {
             method: 'PUT', // O método que criamos
             headers: {
                 'Content-Type': 'application/json'
@@ -135,7 +135,7 @@ const handleVoteClick = async (event) => {
 document.addEventListener('DOMContentLoaded', async () => {
     
     try {
-        const response = await fetch('http://localhost:3000/opinioes');
+        const response = await fetch('https://opinion-student-backend.onrender.com/opinioes');
         
         if (!response.ok) {
             throw new Error('Falha ao carregar o feed. O servidor está ligado?');
