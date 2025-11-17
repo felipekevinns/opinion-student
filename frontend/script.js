@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const autorInputWrapper = document.getElementById('autor-input-wrapper');
     const autorInput = document.getElementById('autor-input');
     
-    const MAX_CHARS = 1000;
+    const MAX_CHARS = 5000;
 
     // --- 2. Regra: Contador de Caracteres (Não mudou) ---
     textarea.addEventListener('input', () => {
