@@ -130,7 +130,9 @@ main {
     }
 }
 
-
+button {
+    cursor: pointer;
+}
 
 /* ======================================================= */
 /* ------------------------------------------------------- */
@@ -204,21 +206,20 @@ h1 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    cursor: pointer; /* Facilita o clique */
+    cursor: pointer;
 }
 
 #anonimo-checkbox {
     width: 1.15rem;
     height: 1.15rem;
     cursor: pointer;
-    /* Estiliza a cor da caixa marcada */
     accent-color: var(--secondary-highlight);
 }
 
 .checkbox-wrapper label {
-    font-weight: 400; /* Regular */
+    font-weight: 400;
     color: var(--text-main);
-    user-select: none; /* Impede a seleção do texto ao clicar */
+    user-select: none;
     cursor: pointer;
 }
 
@@ -229,23 +230,21 @@ h1 {
     gap: 0.5rem;
 }
 
-/* Classe 'show' que o JS vai adicionar para mostrar o campo */
+
 .autor-input-wrapper.show {
     display: flex;
 }
 
 .autor-input-wrapper label {
-    font-weight: 500; /* Medium */
+    font-weight: 500;
     color: var(--text-secondary);
 }
 
-/* Reutiliza o estilo dos inputs do login.html */
 .autor-input-wrapper input {
     width: 100%;
     padding: 0.75rem;
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    
     background-color: var(--bg-secondary);
     border: 1px solid var(--borders);
     color: var(--text-main);
@@ -257,8 +256,8 @@ h1 {
     border-color: var(--secondary-highlight);
 }
 
-/* Botão de Envio */
-#submit-button {
+.submit-button {
+    margin-top: 10px;
     display: inline-block;
     position: relative;
     padding: 0.85rem;
@@ -269,17 +268,16 @@ h1 {
     font-weight: 500;
     border: none;
     border-radius: 9px;
-    cursor: pointer;
     transition: all 0.4s;
 }
 
-#submit-button:hover {
+.submit-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px #18181840;
     filter: brightness(0.9);
 }
 
-#submit-button::after {
+.submit-button::after {
     content: "";
     display: inline-block;
     height: 100%;
@@ -293,7 +291,7 @@ h1 {
     transition: all .8s;
 }
 
-#submit-button:hover::after {
+.submit-button:hover::after {
     transform: scaleX(1.2) scaleY(1.4);
     opacity: 0;
 }
@@ -499,7 +497,6 @@ h1 {
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.95rem;
-    cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
     display: flex;
     align-items: center;
@@ -685,8 +682,6 @@ h1 {
     outline: none;
     border-color: var(--secondary-highlight);
 }
-
-
 
 
 /* ======================================================= */
