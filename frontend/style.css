@@ -517,6 +517,7 @@ h1 {
 }
 
 .ranking-card {
+    position: relative;
     display: flex;
     align-items: stretch;
     background-color: var(--bg-secondary);
@@ -561,6 +562,43 @@ h1 {
     flex-direction: column;
     gap: 0.8rem;
 }
+
+
+.delete-icon-wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--danger, #DA3633);
+    border-radius: 50%;
+    cursor: pointer;
+    
+    /* 3. Esconde por padrão */
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.2s ease-out;
+}
+
+.delete-icon-wrapper i {
+    color: var(--danger, #DA3633);
+    font-size: 0.9rem;
+    display: block; /* Garante que o ícone fique centralizado */
+}
+
+.ranking-card:hover .delete-icon-wrapper {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.delete-icon-wrapper:hover {
+    background-color: var(--danger, #DA3633);
+}
+.delete-icon-wrapper:hover i {
+    color: var(--text-main);
+}
+
+
 .opinion-text {
     font-size: 1rem;
     font-weight: 500;
