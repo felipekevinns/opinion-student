@@ -35,12 +35,13 @@ function renderizarFeed(listaDeOpinioes) {
         });
 
         card.innerHTML = `
-            <p class="card-text">${opiniao.texto_opiniao}</p>
-            <div class="card-meta">
+            <h3 class="opinion-text">${opiniao.texto_opiniao}</h3>
+            <div class="opinion-info">
                 <span>Enviado por: <strong>${opiniao.autor}</strong></span>
                 <span>${dataFormatada}</span>
             </div>
-            <div class="card-actions">
+
+            <div class="vote-buttons">
                 <button 
                     class="vote-button apoiar ${votoUsuario === 'apoiar' ? 'selected' : ''}" 
                     data-vote="apoiar" 
