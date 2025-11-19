@@ -57,6 +57,38 @@ form {
     gap: 1rem;
 }
 
+
+/* --- 17. Loading Spinner --- */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    gap: 1rem;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-left-color: var(--secondary-highlight);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Classe para esconder o spinner via JS */
+.hidden {
+    display: none !important;
+}
+
+
 /* ---  Estilos do Cabeçalho Principal (Logo + Navegação) --- */
 .site-header {
     width: 100%;

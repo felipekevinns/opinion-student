@@ -1,5 +1,5 @@
 // Espera o documento HTML ser completamente carregado
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
 
     // --- 1. Seleção dos Elementos da UI (ATUALIZADO) ---
     const form = document.getElementById('feedback-form');
@@ -88,4 +88,34 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessage.classList.add('show');
         }
     });
+
+
+    const loadingSpinner = document.getElementById('loading-spinner');
+    
+    try {
+        const response = await fetch('https://opinion-student-backend.onrender.com/opinioes');
+        
+        if (!response.ok) {
+            throw new Error('Falha ao carregar o feed.');
+        }
+        
+        const opinioesDoBackend = await response.json();
+        
+        // ESCONDE O SPINNER ASSIM QUE OS DADOS CHEGAM
+        if(loadingSpinner) loadingSpinner.classList.add('hidden');
+
+        renderizarFeed(opinioesDoBackend);
+
+    } catch (error) {
+        console.error('Erro ao buscar opiniões:', error);
+        if(loadingSpinner) {
+             loadingSpinner.innerHTML = '<p style="color: var(--danger)">Erro ao conectar com o servidor. Tente recarregar.</p>';
+        }
+    }
+
+    const feedLista = document.getElementById('feed-lista');
+    if (feedLista) {
+        feedLista.addEventListener('click', handleVoteClick);
+    }
+
 });
